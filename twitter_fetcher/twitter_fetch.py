@@ -29,7 +29,7 @@ def createTrainingSet(corpusFile, targetResultFile):
     for tweet in corpus:
         try:
             tweetFetched = api.get_status(tweet["tweet_id"])
-            print("Tweet fetched " + tweetFetched.text)
+            print("Tweet fetched: " + tweetFetched.text)
             tweet["text"] = tweetFetched.text
             trainingDataSet.append(tweet)
             time.sleep(sleepTime)
