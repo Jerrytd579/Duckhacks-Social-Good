@@ -21,7 +21,7 @@ def createTrainingSet(corpusFile, targetResultFile):
     with open(corpusFile, 'r') as csvfile:
         lineReader = csv.reader(csvfile, delimiter=',', quotechar="\"")
         for row in lineReader:
-            corpus.append({"tweet_id": row[2], "label": row[1], "topic": row[0]})
+            corpus.append({"tweet_id": row[0]})
 
     sleepTime = 2
     trainingDataSet = []
@@ -29,7 +29,7 @@ def createTrainingSet(corpusFile, targetResultFile):
     for tweet in corpus:
         try:
             tweetFetched = api.get_status(tweet["tweet_id"])
-            print("Tweet fetched" + tweetFetched.text)
+            print("Tweet fetched " + tweetFetched.text)
             tweet["text"] = tweetFetched.text
             trainingDataSet.append(tweet)
             time.sleep(sleepTime)
@@ -42,7 +42,7 @@ def createTrainingSet(corpusFile, targetResultFile):
         linewriter = csv.writer(csvfile, delimiter=',', quotechar="\"")
         for tweet in trainingDataSet:
             try:
-                linewriter.writerow([tweet["tweet_id"], tweet["text"], tweet["label"], tweet["topic"]])
+                linewriter.writerow([tweet["tweet_id"], tweet["text"]])
             except Exception as e:
                 print(e)
     return trainingDataSet
