@@ -25,21 +25,20 @@ with open('data/tweets_raw.json') as f:
     for k, v in tweets_data.items():
         if v and racist < 10000:
             racist += 1
-        elif not_racist < 10000:
+            tweets[k] = v
+        elif not v and not_racist < 10000:
             not_racist += 1
-        else:
-            break
-        tweets[k] = v
+            tweets[k] = v
 # Batch get tweet text
 tweet_ids = list(tweets.keys())
-with open('data/tweets.csv', 'a') as f:
+with open('data/tweets.csv', 'a', newline='\n', encoding='utf-8') as f:
     w = csv.writer(f, dialect='excel')
     for i in range(0, len(tweet_ids), 100):
         chunk = tweet_ids[i:i + 100]
         res = api.statuses_lookup(chunk)
         for tweet in res:
             try:
-                w.writerow([tweet.id, tweet.text, tweets[tweet.id_str]])
-            except Exception:
-                continue
+                w.writerow([str(tweet.text), tweets[tweet.id_str]])
+            except Exception as e:
+                print(e)
         print(min(len(tweet_ids), i + 100), 'tweets processed...')
