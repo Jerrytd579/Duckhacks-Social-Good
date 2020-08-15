@@ -2,11 +2,10 @@ import json
 import requests
 
 API = 'https://api.hatebase.org/4-4/{}'
-# auth = requests.post(API.format('authenticate'), data={
-#     'api_key': 'eVYUGZXGPPBcdbXnCPdNWtEhtFgKuJpR'
-# })
-# token = auth.json()['token']
-token = 'LRJsYWmNFPfqZWBDDQUxUHHYQFnYJrJY'
+auth = requests.post(API.format('authenticate'), data={
+    'api_key': 'eVYUGZXGPPBcdbXnCPdNWtEhtFgKuJpR'
+})
+token = auth.json()['result']['token']
 bad_words = set()
 for page in range(1, 50):
     data = requests.post(API.format('get_sightings'), data={
