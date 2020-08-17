@@ -1,4 +1,4 @@
-src/**/*.json
+**/gauth.json
 **/*.env
 node_modules/
 prep/data
