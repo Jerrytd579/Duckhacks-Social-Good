@@ -15,6 +15,7 @@ export default async function predict() {
   };
 
   const [response] = await client.predict(request);
+  console.log();
 
   for (const annotationPayload of response.payload) {
     console.log(`Predicted class name: ${annotationPayload.displayName}`);

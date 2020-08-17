@@ -1,0 +1,104 @@
+body{
+    background-color: #F9F182;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+#path{
+    left:0;
+    overflow: visible;
+}
+#blm{
+    height:100%;
+    z-index: -1;
+    position: relative;
+    overflow: visible;
+    align-items: center;
+}
+.content{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+.pageTitle{
+    text-transform: Uppercase;
+    margin-bottom: .5em;
+    font-family: 'Rubik', sans-serif;
+    font-size: 6rem;
+    color: #E4E5E6; 
+}    
+.pageTitle{
+    position: relative;
+    color: black;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 3px;
+    -webkit-background-clip: text;
+
+}  
+.infoDiv{
+    margin-bottom:100px;
+}
+.inputTitle{
+    text-transform: Uppercase;
+    margin-bottom: .5em;
+    font-family: 'Rubik', sans-serif;
+    font-size: 70px;
+    color: black;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 3px;
+    
+}
+ 
+.inputDesc{
+    font-family: 'Rubik', sans-serif;
+    font-size: 40px;
+    color: black;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 1px;
+}
+.input{
+    position: relative;
+    height: 300px;
+    max-height:390px;
+    max-width: 580px;
+    width: 500px;
+    box-shadow: 5px 5px 5px grey;
+    margin-bottom: 10px;
+
+}
+button.submitBTN{
+    position: absolute;
+    display: block;
+    padding:0.3em 1.2em;
+    margin:0 0.3em 0.3em 0;
+    left: 48%;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#FFFFFF;
+    background-color:#4eb5f1;
+    transition: all 0.2s;
+    
+}
+button.submitBTN:hover{
+    color:#DDDDDD;
+    border-color:#DDDDDD;
+}
+button.submitBTN:active{
+    color:#BBBBBB;
+    border-color:#BBBBBB;
+}
+.infoTitle{
+    text-transform: Uppercase;
+    margin-bottom: .5em;
+    font-family: 'Rubik', sans-serif;
+    color: black;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 2px;
+}
+
