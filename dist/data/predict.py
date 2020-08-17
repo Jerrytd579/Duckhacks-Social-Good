@@ -32,3 +32,8 @@ def predict(text: str) -> float:
     The model's data is vectorized using TF-IDF, and learns using a Bagging Classifier model."""
     data = vectorizer.transform([text])
     return classifier.predict_proba(data)[0][1]
+
+# while True:
+#     text = input('> ')
+#     result = predict(text)
+#     print(f'{result:.2%} racial bias')
