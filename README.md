@@ -14,15 +14,7 @@ Leave running
 
 
 
-Open another terminal and cd into Duckhacks-Social-Good/src
-
-Run command python3.8 learn.py (note: this will take a while and requires machine to have Python 3.8 installed)
-
-Run command mv vectorizer.pk ../dist/data
-
-Run command  mv classifier.pk ../dist/data
-
-Run command cd ../dist/data
+Open another terminal and cd into Duckhacks-Social-Good/dist/data
 
 Run python3.8 predict.py
 
