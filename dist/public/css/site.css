@@ -34,12 +34,12 @@ body{
     position: relative;
     color: black;
     -webkit-text-fill-color: white;
-    -webkit-text-stroke-width: 3px;
     -webkit-background-clip: text;
+    text-shadow: 6px 6px 0px rgba(0,0,0,0.5);
 
 }  
 .infoDiv{
-    margin-bottom:100px;
+    margin-bottom:50px;
 }
 .inputTitle{
     text-transform: Uppercase;
@@ -48,16 +48,17 @@ body{
     font-size: 70px;
     color: black;
     -webkit-text-fill-color: white;
-    -webkit-text-stroke-width: 3px;
+    -webkit-background-clip: text;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
     
 }
  
 .inputDesc{
     font-family: 'Rubik', sans-serif;
     font-size: 40px;
-    color: black;
     -webkit-text-fill-color: white;
-    -webkit-text-stroke-width: 1px;
+    -webkit-background-clip: text;
+    text-shadow: 2px 3px 0px rgba(0,0,0,0.5);
 }
 .input{
     position: relative;
@@ -97,8 +98,21 @@ button.submitBTN:active{
     text-transform: Uppercase;
     margin-bottom: .5em;
     font-family: 'Rubik', sans-serif;
+    font-size: 50px;
     color: black;
     -webkit-text-fill-color: white;
-    -webkit-text-stroke-width: 2px;
+    -webkit-background-clip: text;
+    text-shadow: 2px 3px 0px rgba(0,0,0,0.5);
+}
+.infoP{
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+    color: black;
+    -webkit-text-fill-color: white;
+    -webkit-background-clip: text;
+    text-shadow: 2px 2px 2px rgba(0,0,0,1);
+    width:500px;
+    margin-left: 16.5em;
+    
 }
 
