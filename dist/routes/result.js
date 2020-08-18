@@ -16,36 +16,31 @@ router.post('/', async (req, res) => {
     });
     return;
   }
-  try {
-    console.log("here1");
-    const score = await data.predict(formData['text-to-test']);
-    let text = '';
-    console.log("here");
-    switch (score) {
-      case score >= 0.45 && score <= 0.55:
-        text = 'This text is most likely neutral.';
-        break;
-      case score > 0.55 && score <= 0.65:
-        text = 'This text may contain racial bias.';
-        break;
-      case score > 0.65:
-        text = 'This text is very likely racist!';
-        break;
-      case score < 0.45 && score >= 0.35:
-        text = 'This text is probably not discriminatory.';
-        break;
-      case score < 0.35:
-        text = 'This text is very unlikely to contain racial bias.';
-        break;
-    }
-    res.render('result/result', {
-      title: 'Bias Analysis Results',
-      text: formData['text-to-test'],
-      score: score,
-    });
-  } catch (e) {
-    res.status(500).json({ error: e });
+  let query = formData['text-to-test'];
+  const score = await data.predict(query);
+  let text = '';
+  switch (score) {
+    case score >= 0.45 && score <= 0.55:
+      text = 'This text is most likely neutral.';
+      break;
+    case score > 0.55 && score <= 0.65:
+      text = 'This text may contain racial bias.';
+      break;
+    case score > 0.65:
+      text = 'This text is very likely racist!';
+      break;
+    case score < 0.45 && score >= 0.35:
+      text = 'This text is probably not discriminatory.';
+      break;
+    case score < 0.35:
+      text = 'This text is very unlikely to contain racial bias.';
+      break;
   }
+  res.render('result/result', {
+    title: 'Bias Analysis Results',
+    text: text,
+    score: score,
+  });
 });
 
 module.exports = router;

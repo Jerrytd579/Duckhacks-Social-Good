@@ -47,6 +47,6 @@ def analyze():
     if request.method == 'POST':
         text = request.json['text']
         value = predict(text)
-        return value
+        return jsonify(value)
 
 app.run()

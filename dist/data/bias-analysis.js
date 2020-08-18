@@ -1,5 +1,6 @@
 const { PredictionServiceClient } = require('@google-cloud/automl').v1;
 
+const axios = require('axios');
 const client = new PredictionServiceClient();
 const projectId = 'algebraic-depot-286523';
 const location = 'us-central1';
@@ -24,14 +25,13 @@ module.exports = {
     return predict, score;
   },
   async predict(content) {
-    return await fetch('http://localhost:5000/analyze', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        text: content,
-      }),
-    });
+    return axios
+      .post('http://127.0.0.1:5000/analyze', { text: content })
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
