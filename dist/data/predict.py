@@ -46,7 +46,10 @@ app = Flask(__name__)
 def analyze():
     if request.method == 'POST':
         text = request.json['text']
+        print("___________________________________here___________________________________");
+        print(text);
         value = predict(text)
+        print(value);
         return jsonify(value)
 
 app.run()

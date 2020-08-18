@@ -36,6 +36,9 @@ router.post('/', async (req, res) => {
       text = 'This text is very unlikely to contain racial bias.';
       break;
   }
+  console.log("_____________________________________________________ggggggggggg________________");
+  console.log(score);
+  console.log(text);
   res.render('result/result', {
     title: 'Bias Analysis Results',
     text: text,
