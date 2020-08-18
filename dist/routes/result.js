@@ -32,20 +32,59 @@ router.post('/', async (req, res) => {
   }else if(score < 0.45 && score >= 0.35){
     text = 'This text is probably not discriminatory.';
     index= 2;
+  }else if(score == 0){
+    text = 'This text is very unlikely to contain racial bias.';
+    index= 1;
+    console.log("hereeee");
   }else{
     text = 'This text is very unlikely to contain racial bias.';
     index= 1;
+    console.log("noooooo");
   }
   console.log("_____________________________________________________ggggggggggg________________");
   console.log(score);
   console.log(text);
-
-  res.render('result/result', {
-    title: 'Bias Analysis Results',
-    text: text,
-    score: score,
-    index: index
-  });
+  if(index == 1){
+    console.log("nooooo1111");
+    res.render('result/result', {
+      title: 'Bias Analysis Results',
+      text: text,
+      score: score,
+      one:true
+    });
+  
+  }else
+  if(index == 2){
+    res.render('result/result', {
+      title: 'Bias Analysis Results',
+      text: text,
+      score: score,
+      two:true
+    });
+  }else
+  if(index == 3){
+    res.render('result/result', {
+      title: 'Bias Analysis Results',
+      text: text,
+      score: score,
+      three:true
+    });
+  }else
+  if(index == 4){
+    res.render('result/result', {
+      title: 'Bias Analysis Results',
+      text: text,
+      score: score,
+      four:true
+    });
+  }else
+    res.render('result/result', {
+      title: 'Bias Analysis Results',
+      text: text,
+      score: score,
+      five:true
+    });
+  
 });
 
 module.exports = router;

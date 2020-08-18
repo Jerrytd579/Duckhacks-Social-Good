@@ -37,9 +37,46 @@ body{
     -webkit-background-clip: text;
     text-shadow: 6px 6px 0px rgba(0,0,0,0.5);
 
+}
+.a{
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+    color: black;
+    -webkit-text-fill-color: white;
+    text-shadow: 2px 2px 2px rgba(0,0,0,1);
+    background: #86d91a;
 }  
+.b{
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+    color: black;
+    -webkit-text-fill-color: white;
+    text-shadow: 2px 2px 2px rgba(0,0,0,1);
+    background: #cedb1a;
+}
+.c{
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+    color: black;
+    -webkit-text-fill-color: white;
+    text-shadow: 2px 2px 2px rgba(0,0,0,1);
+    background: #e0bf1b;
+}
+.d{
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+    color: black;
+    -webkit-text-fill-color: white;
+    text-shadow: 2px 2px 2px rgba(0,0,0,1);
+    background: #de741d;
+}
 .e{
-    background:red;
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+    color: black;
+    -webkit-text-fill-color: white;
+    text-shadow: 2px 2px 2px rgba(0,0,0,1);
+    background: #e32424;
 }
 .infoDiv{
     margin-bottom:50px;
