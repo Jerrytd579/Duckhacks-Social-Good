@@ -24,7 +24,7 @@ module.exports = {
     return predict, score;
   },
   async predict(content) {
-    return await fetch('http://localhost:5000/analyze', {
+    return fetch('http://localhost:5000/analyze', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -32,6 +32,12 @@ module.exports = {
       body: JSON.stringify({
         text: content,
       }),
-    });
+    })
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };

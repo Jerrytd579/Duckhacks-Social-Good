@@ -5,7 +5,7 @@ const data = require('../data/bias-analysis');
 
 process.env.GOOGLE_APPLICATION_CREDENTIALS = 'data/gauth.json';
 
-router.post('/', async (req, res) => {
+router.post('/result', async (req, res) => {
   const formData = req.body;
 
   if (!formData['text-to-test']) {
@@ -17,7 +17,9 @@ router.post('/', async (req, res) => {
     return;
   }
   try {
-    const score = await data.predict(formData['text-to-test']);
+    let query = formData['text-to-test'];
+    console.log('query', query);
+    const score = await data.predict(query);
     let text = '';
     switch (score) {
       case score >= 0.45 && score <= 0.55:
@@ -38,7 +40,7 @@ router.post('/', async (req, res) => {
     }
     res.render('result/result', {
       title: 'Bias Analysis Results',
-      text: formData['text-to-test'],
+      text: text,
       score: score,
     });
   } catch (e) {

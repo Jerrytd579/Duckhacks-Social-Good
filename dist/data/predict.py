@@ -24,8 +24,8 @@ class LemmaTokenizer:
         tokens = filter(lambda w: self.token.match(w[0]), tagged)
         return [self.wnl.lemmatize(word, pos=self.pos_map.get(pos[0], wordnet.NOUN)) for word, pos in tokens]
 
-vectorizer = pickle.load(open('vectorizer.pk', 'rb'))
-classifier = pickle.load(open('classifier.pk', 'rb'))
+vectorizer = pickle.load(open('vectorizer-win.pk', 'rb'))
+classifier = pickle.load(open('classifier-win.pk', 'rb'))
 
 def predict(text: str) -> float:
     """Given a string of text, performs a sentiment analysis and returns a score of [0,1].
@@ -45,6 +45,7 @@ app = Flask(__name__)
 @app.route('/analyze', methods=['POST'])
 def analyze():
     if request.method == 'POST':
+        print(request.json, request.get_json())
         text = request.json['text']
         value = predict(text)
         return value
