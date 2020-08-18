@@ -18,31 +18,33 @@ router.post('/', async (req, res) => {
   }
   let query = formData['text-to-test'];
   const score = await data.predict(query);
+  let index = 0;
   let text = 'CHECK THIS';
-  switch (score) {
-    case score >= 0.45 && score <= 0.55:
-      text = 'This text is most likely neutral.';
-      break;
-    case score > 0.55 && score <= 0.65:
+  if(score >= 0.45 && score <= 0.55){
+    text = 'This text is most likely neutral.';
+    index= 3;
+  }else if(score > 0.55 && score <= 0.65){
       text = 'This text may contain racial bias.';
-      break;
-    case score > 0.65:
+      index= 4;
+  }else if(score > 0.65){
       text = 'This text is very likely racist!';
-      break;
-    case score < 0.45 && score >= 0.35:
-      text = 'This text is probably not discriminatory.';
-      break;
-    case score < 0.35:
-      text = 'This text is very unlikely to contain racial bias.';
-      break;
+      index= 5;
+  }else if(score < 0.45 && score >= 0.35){
+    text = 'This text is probably not discriminatory.';
+    index= 2;
+  }else{
+    text = 'This text is very unlikely to contain racial bias.';
+    index= 1;
   }
   console.log("_____________________________________________________ggggggggggg________________");
   console.log(score);
   console.log(text);
+
   res.render('result/result', {
     title: 'Bias Analysis Results',
     text: text,
     score: score,
+    index: index
   });
 });
 

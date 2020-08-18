@@ -10,12 +10,46 @@
 {{else}}
 
 {{#if score}}
-  <article class="success">
+  {{#if index EQUALS 1}}
+  <article class="a">
     <p>Results of analysis</p>
     <p>Score: {{score}}</p>
     <p>Description: {{text}}</p>
   </article>
-  
+  {{else}}
+  {{#if index EQUALS 2}}
+  <article class="b">
+    <p>Results of analysis</p>
+    <p>Score: {{score}}</p>
+    <p>Description: {{text}}</p>
+  </article>
+  {{else}}
+  {{#if index EQUALS 3}}
+  <article class="c">
+    <p>Results of analysis</p>
+    <p>Score: {{score}}</p>
+    <p>Description: {{text}}</p>
+  </article>
+  {{else}}
+  {{#if index EQUALS 4}}
+  <article class="d">
+    <p>Results of analysis</p>
+    <p>Score: {{score}}</p>
+    <p>Description: {{text}}</p>
+  </article>
+  {{else}}
+  {{#if index EQUALS 5}}
+  <article class="e">
+    <p>Results of analysis</p>
+    <p>Score: {{score}}</p>
+    <p>Description: {{text}}</p>
+  </article>
+  {{/if}}
+  {{/if}}
+  {{/if}}
+  {{/if}}
+  {{/if}}
+
 {{/if}}
 {{/if}}
 

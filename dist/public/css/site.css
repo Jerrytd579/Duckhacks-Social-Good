@@ -38,6 +38,9 @@ body{
     text-shadow: 6px 6px 0px rgba(0,0,0,0.5);
 
 }  
+.e{
+    background:red;
+}
 .infoDiv{
     margin-bottom:50px;
 }
