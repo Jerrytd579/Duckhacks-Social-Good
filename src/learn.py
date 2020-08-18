@@ -71,7 +71,10 @@ vectorizer = TfidfVectorizer(
     tokenizer=LemmaTokenizer(),
     token_pattern=None,)
 vectorizer.fit(raw_train)
-pickle.dump(vectorizer, open('vectorizer.pk', 'wb'))
+with open('vectorizer.pk', 'wb') as f:
+    pickle.dump(vectorizer, f)
+# with open('vectorizer.txt', 'w') as f:
+#     f.write(pickle.dumps(vectorizer).decode('utf-8'))
 
 x_train = vectorizer.transform(raw_train)
 x_test = vectorizer.transform(raw_test)
@@ -91,25 +94,14 @@ print(f'LR Model Test Accuracy: {score:.2%}')
 bc_classifier = BaggingClassifier().fit(x_train, y_train)
 score = bc_classifier.score(x_test, y_test)
 print(f'BC Model Test Accuracy: {score:.2%}')
-pickle.dump(bc_classifier, open('classifier.pk', 'wb'))
+with open('classifier.pk', 'wb') as f:
+    pickle.dump(bc_classifier, f)
+# pickle.dumps(bc_classifier, open('classifier.pk', 'w'))
 
-def evaluate(query: str) -> ItemsView[str, float]:
-    """Given a string input, returns the results of each model's prediction.
-    This should eventually return a float with the best overall accuracy for the web."""
-    test = vectorizer.transform([query])
-    return {
-        'MNB Model': nb_classifier.predict_proba(test)[0][1],
-        'LR Model': lr_classifier.predict_proba(test)[0][1],
-        'BC Model': bc_classifier.predict_proba(test)[0][1],
-    }.items()
+def predict(text: str) -> float:
+    """Given a string of text, performs a sentiment analysis and returns a score of [0,1].
+    The model's data is vectorized using TF-IDF, and learns using a Bagging Classifier model."""
+    data = vectorizer.transform([text])
+    return bc_classifier.predict_proba(data)[0][1]
 
-print('Enter your queries after the \'>\' to get an estimate. Type \'quit\' to quit.')
-while True:
-    query = input('> ')
-    if query == 'quit':
-        exit()
-    assert query != ''
-    print()
-    for result, accuracy in evaluate(query):
-        print(f'{result}: {accuracy:.2%} likely to include racial bias')
-    print()
+print(predict('i hate black people'))

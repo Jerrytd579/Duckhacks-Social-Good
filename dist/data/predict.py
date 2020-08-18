@@ -37,3 +37,16 @@ def predict(text: str) -> float:
 #     text = input('> ')
 #     result = predict(text)
 #     print(f'{result:.2%} racial bias')
+
+# Server
+from flask import Flask, jsonify, request
+app = Flask(__name__)
+
+@app.route('/analyze', methods=['POST'])
+def analyze():
+    if request.method == 'POST':
+        text = request.json['text']
+        value = predict(text)
+        return value
+
+app.run()

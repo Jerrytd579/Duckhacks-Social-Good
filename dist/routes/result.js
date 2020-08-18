@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 const router = express.Router();
 const data = require('../data/bias-analysis');
 
@@ -25,5 +26,12 @@ router.post('/', async (req, res) => {
   } catch (e) {
     res.status(500).json({ error: e });
   }
+});
+
+router.get('/training', async (req, res) => {
+  fs.readFile('data/training_data.csv', (err, data) => {
+    console.log(error, data);
+    res.send(data);
+  });
 });
 module.exports = router;
