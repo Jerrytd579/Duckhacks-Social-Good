@@ -17,21 +17,33 @@ router.post('/', async (req, res) => {
     return;
   }
   try {
-    const results = await data.predict(formData['text-to-test']);
+    const score = await data.predict(formData['text-to-test']);
+    let text = '';
+    switch (score) {
+      case score >= 0.45 && score <= 0.55:
+        text = 'This text is most likely neutral.';
+        break;
+      case score > 0.55 && score <= 0.65:
+        text = 'This text may contain racial bias.';
+        break;
+      case score > 0.65:
+        text = 'This text is very likely racist!';
+        break;
+      case score < 0.45 && score >= 0.35:
+        text = 'This text is probably not discriminatory.';
+        break;
+      case score < 0.35:
+        text = 'This text is very unlikely to contain racial bias.';
+        break;
+    }
     res.render('result/result', {
       title: 'Bias Analysis Results',
       text: formData['text-to-test'],
-      analysis: results,
+      score: score,
     });
   } catch (e) {
     res.status(500).json({ error: e });
   }
 });
 
-router.get('/training', async (req, res) => {
-  fs.readFile('data/training_data.csv', (err, data) => {
-    console.log(error, data);
-    res.send(data);
-  });
-});
 module.exports = router;
