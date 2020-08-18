@@ -6,7 +6,7 @@ const location = 'us-central1';
 const modelId = 'TST4181277793687961600';
 
 module.exports = {
-  async predict(content) {
+  async predict_cloud(content) {
     // Construct request
     const request = {
       name: client.modelPath(projectId, location, modelId),
@@ -22,5 +22,16 @@ module.exports = {
     let predict = res.payload[0].textSentiment.sentiment;
     let score = res.metadata.sentiment_score;
     return predict, score;
+  },
+  async predict(content) {
+    return await fetch('http://localhost:5000/analyze', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        text: content,
+      }),
+    });
   },
 };

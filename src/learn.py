@@ -6,7 +6,6 @@ from typing import ItemsView
 
 from nltk.corpus import stopwords, wordnet
 from nltk.stem.wordnet import WordNetLemmatizer
-from scipy.sparse import save_npz, load_npz
 from sklearn import metrics
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.model_selection import train_test_split
