@@ -23,7 +23,12 @@ class LemmaTokenizer:
         # Only keep characters a-z
         tokens = filter(lambda w: self.token.match(w[0]), tagged)
         return [self.wnl.lemmatize(word, pos=self.pos_map.get(pos[0], wordnet.NOUN)) for word, pos in tokens]
-
+import sys
+vec_file = 'vectorizer.pk'
+cls_file = 'classifier.pk'
+if sys.platform == 'win32':
+    vec_file = 'vectorizer-win.pk'
+    cls_file = 'classifier-win.pk'
 vectorizer = pickle.load(open('vectorizer.pk', 'rb'))
 classifier = pickle.load(open('classifier.pk', 'rb'))
 
@@ -47,6 +52,8 @@ def analyze():
     if request.method == 'POST':
         text = request.json['text']
         value = predict(text)
-        return jsonify(value)
+        return jsonify({
+            'value': value
+        })
 
 app.run()
