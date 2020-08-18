@@ -49,6 +49,8 @@ body{
     font-family: 'Rubik', sans-serif;
     font-size: 20px;
     color: black;
+    -webkit-text-fill-color: white;
+    text-shadow: 2px 2px 2px rgba(0,0,0,1);
 }
 .a{
     font-family: 'Rubik', sans-serif;
