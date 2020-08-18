@@ -29,8 +29,8 @@ cls_file = 'classifier.pk'
 if sys.platform == 'win32':
     vec_file = 'vectorizer-win.pk'
     cls_file = 'classifier-win.pk'
-vectorizer = pickle.load(open('vectorizer.pk', 'rb'))
-classifier = pickle.load(open('classifier.pk', 'rb'))
+vectorizer = pickle.load(open(vec_file, 'rb'))
+classifier = pickle.load(open(cls_file, 'rb'))
 
 def predict(text: str) -> float:
     """Given a string of text, performs a sentiment analysis and returns a score of [0,1].

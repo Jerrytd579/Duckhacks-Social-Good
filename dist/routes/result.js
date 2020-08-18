@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
   }
   let query = formData['text-to-test'];
   const score = await data.predict(query);
-  let text = '';
+  let text = 'CHECK THIS';
   switch (score) {
     case score >= 0.45 && score <= 0.55:
       text = 'This text is most likely neutral.';

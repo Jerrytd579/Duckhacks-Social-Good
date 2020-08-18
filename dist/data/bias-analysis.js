@@ -28,7 +28,7 @@ module.exports = {
     return axios
       .post('http://127.0.0.1:5000/analyze', { text: content })
       .then((res) => {
-        return res['value'];
+        return res.data.value;
       })
       .catch((err) => {
         // console.log(err);
